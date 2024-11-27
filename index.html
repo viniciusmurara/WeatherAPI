@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Consumindo a WeatherAPI</title>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white relative p-8 rounded-lg shadow-md h-[80vh] w-[60vw] flex flex-col items-center justify-evenly">
+        <!-- Título -->
+        <div class="text-4xl font-bold text-center text-gray-800">
+            Buscador de Clima
+        </div>
+
+        <!-- Formulário -->
+        <div class="w-full flex flex-col items-center">
+            <form id="cidade-form">
+                <label for="cidade" class="text-gray-500 font-medium">
+                    Digite o nome da cidade:
+                </label>
+                <div class="mt-2 flex">
+                    <input type="text" id="cidade" placeholder="Ex: São Paulo"
+                        class="w-96 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <button type="submit"
+                        class="bg-sky-700 text-white px-4 py-2 rounded-lg font-semibold hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-blue-300 ml-2">
+                        Buscar
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Container para o card -->
+        <div id="card" class="hidden bg-gray-50 p-6 mt-6 rounded-lg shadow-lg w-full max-w-lg">
+            <div id="icon-text" class="flex items-center justify-between">
+                <h2 id="text" class="text-2xl font-bold text-gray-700"></h2>
+                <img id="icon" src="" alt="Ícone do Clima" class="h-16 w-16">
+            </div>
+            <div class="mt-4 text-gray-600">
+                <p id="temp-c"></p>
+                <p id="feelslike-c"></p>
+                <p id="humidity"></p>
+                <p id="daily-chance-of-rain"></p>
+                <p id="min-temp"></p>
+                <p id="max-temp"></p>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
