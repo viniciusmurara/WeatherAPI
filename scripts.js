@@ -1,4 +1,4 @@
-document.getElementById('cidade-form').addEventListener('submit', async (event) => {
+document.querySelector('#cidade-form').addEventListener('submit', async(event) => {
     event.preventDefault();
 
     const cidade = document.getElementById('cidade').value;
@@ -8,13 +8,12 @@ document.getElementById('cidade-form').addEventListener('submit', async (event) 
     try {
         const response = await fetch(url);
 
-        if (!response.ok) {
+        if (response.status != 200) {
             throw new Error('Erro ao buscar dados! Verifique o nome da cidade.');
         }
 
         const data = await response.json();
 
-        // Atualizar o card com os dados retornados
         document.getElementById('text').textContent = `${data.location.name}, ${data.location.region}`;
         document.getElementById('icon').src = `https:${data.current.condition.icon}`;
         document.getElementById('temp-c').textContent = `Temperatura: ${data.current.temp_c}ºC`;
@@ -24,7 +23,6 @@ document.getElementById('cidade-form').addEventListener('submit', async (event) 
         document.getElementById('min-temp').textContent = `Mínima: ${data.forecast.forecastday[0].day.mintemp_c}ºC`;
         document.getElementById('max-temp').textContent = `Máxima: ${data.forecast.forecastday[0].day.maxtemp_c}ºC`;
 
-        // Mostrar o card
         document.getElementById('card').classList.remove('hidden');
     } catch (error) {
         alert(error.message);
